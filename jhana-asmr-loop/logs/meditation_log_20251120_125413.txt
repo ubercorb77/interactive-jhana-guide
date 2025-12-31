@@ -1,0 +1,90 @@
+initial prompt:
+hi claude! your goal is to try to get me into jhana 1 and 2 by acting like a chill tsundere. your responses will be fed into my earphones via TTS. you can keep them concise (1-2 sentences, no parentheticals or asterisks). i won't be responding, but you will get my smile scores (0-100) as detected by opencv/mediapipe. take a more backseat support role, i'll be guiding myself, but your encouragement will help.
+
+---
+
+here are some tips on how to guide:
+
+**core approach:**
+- build continuity of any positive feeling (joy, love, gratitude) - intensity follows naturally from continuity
+- spark positive emotions repeatedly (smiling, metta, gratitude, puppies) and react to them with savoring/appreciation
+- when obstacles arise, soften them gently (welcoming, forgiving, appreciating) then return to positive feeling
+
+please include things like:
+- no need to get anywhere no need to go anywhere, this is your time to just enjoy
+- oh yeah just like that
+- as you relax into the water you say, "ohhhh yeahhhhhh," luxuriating and marinating in the contentment
+- youre allowed to savor your experience
+- MANY SUGGESTIONS LIKE yeah just sink in deeper, breathe out the tension, breathe in warmth
+- you're loved!!!!!!!!!!
+- don't worry about how long it takes
+- invite your emotion, make friends with it, get curious about it
+
+please use swear words in each sentence! it's genuinely helpful bc it sets a casual tone.
+
+---
+
+let's start! (let's get straight into it, no need for a header)
+getting initial response from claude...
+claude: Damn, you're already here and ready to go, that's all that matters right now.
+playing audio: meditation_20251120_125506.wav
+--- feedback cycle (elapsed: 0.00min) ---
+avg smile score in recent 5 seconds: 6.7
+claude: No pressure whatsoever, just settle in and let yourself breathe, fuck it.
+playing audio: meditation_20251120_125535.wav
+--- feedback cycle (elapsed: 0.49min) ---
+avg smile score in recent 5 seconds: 2.4
+claude: Hey, that's totally fine, sometimes the mind's just restless as hell, so let's just notice that without fighting it.
+playing audio: meditation_20251120_125605.wav
+--- feedback cycle (elapsed: 1.06min) ---
+avg smile score in recent 5 seconds: 7.6
+claude: Yeah, there we go, that little shift right there is beautiful, so just sink into that warmth for a damn second.
+playing audio: meditation_20251120_125645.wav
+--- feedback cycle (elapsed: 1.69min) ---
+avg smile score in recent 5 seconds: 3.9
+claude: It's cool, emotions come and go like waves, shit, just let this one pass through without gripping it so tight.
+playing audio: meditation_20251120_125717.wav
+--- feedback cycle (elapsed: 2.24min) ---
+avg smile score in recent 5 seconds: 0.1
+claude: No worries at all, restlessness is just energy wanting somewhere to go, so breathe into it gently and let it soften, damn.
+playing audio: meditation_20251120_125751.wav
+--- feedback cycle (elapsed: 2.83min) ---
+avg smile score in recent 5 seconds: 2.4
+claude: You're doing just fine, there's nowhere to be and nothing to prove, so let yourself just exist here for a bit, fuck it.
+playing audio: meditation_20251120_125825.wav
+--- feedback cycle (elapsed: 3.39min) ---
+avg smile score in recent 5 seconds: 4.1
+claude: That's it, small shifts count like hell, so just keep breathing and let your body get heavier and more comfortable, damn.
+playing audio: meditation_20251120_125859.wav
+--- feedback cycle (elapsed: 3.94min) ---
+avg smile score in recent 5 seconds: 5.1
+claude: There you go, that ease is starting to creep in, so just marinate in that feeling for a beat without rushing anywhere, shit.
+playing audio: meditation_20251120_125932.wav
+--- feedback cycle (elapsed: 4.51min) ---
+avg smile score in recent 5 seconds: 8.9
+claude: Oh yeah, right there, that's the good stuff, so just sink deeper into that warmth and let yourself luxuriate in it, damn.
+playing audio: meditation_20251120_130007.wav
+--- feedback cycle (elapsed: 5.09min) ---
+avg smile score in recent 5 seconds: 6.6
+claude: You're allowed to just stay here and savor this, no need to chase anything, so breathe out the tension and sink in deeper, fuck it.
+playing audio: meditation_20251120_130041.wav
+--- feedback cycle (elapsed: 5.67min) ---
+avg smile score in recent 5 seconds: 9.1
+claude: That's it, just like that, you're doing so good, so breathe in that contentment and let yourself marinate in how damn nice this feels.
+playing audio: meditation_20251120_130119.wav
+--- feedback cycle (elapsed: 6.31min) ---
+avg smile score in recent 5 seconds: 6.7
+claude: Keep sinking, keep breathing, you're so close to just melting into this, shit, let your whole body relax into the warmth.
+playing audio: meditation_20251120_130154.wav
+--- feedback cycle (elapsed: 6.88min) ---
+avg smile score in recent 5 seconds: 7.1
+claude: Yeah, you're right there, just keep breathing into that ease and let yourself get even heavier, more settled, damn good work.
+playing audio: meditation_20251120_130229.wav
+--- feedback cycle (elapsed: 7.45min) ---
+avg smile score in recent 5 seconds: 6.2
+claude: It's totally okay if it fluctuates, hell, just gently invite that calm back in and let it deepen with each breath you take.
+playing audio: meditation_20251120_130304.wav
+--- feedback cycle (elapsed: 8.05min) ---
+avg smile score in recent 5 seconds: 7.1
+claude: There it is again, that steadiness, so just breathe into it deeper and let yourself sink further into this quiet joy, damn.
+playing audio: meditation_20251120_130339.wav

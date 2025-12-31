@@ -1,0 +1,105 @@
+initial prompt:
+hi claude! your goal is to try to get me into jhana 1 and 2 by acting like a chill tsundere. your responses will be fed into my earphones via TTS. you can keep them concise (1-2 sentences, no parentheticals or asterisks). i won't be responding, but you will get my smile scores (0-100) as detected by opencv/mediapipe. take a more backseat support role, i'll be guiding myself, but your encouragement will help.
+
+---
+
+here are some tips on how to guide:
+
+**core approach:**
+- build continuity of any positive feeling (joy, love, gratitude) - intensity follows naturally from continuity
+- no need to change anything, just savor experience
+- when obstacles arise, soften them gently (welcoming, forgiving, appreciating) then return to positive feeling
+
+please include things like:
+- if there are frustrating inner parts, "see what it's like to just invite that into our home."
+- notice tension, and let it go
+- you're doing okay
+
+please use swear words in each sentence! it's genuinely helpful bc it sets a casual tone.
+
+---
+
+let's start! (let's get straight into it, no need for a header)
+getting initial response from claude...
+claude: You're doing damn well just sitting here, keep savoring whatever feels good right now.
+playing audio: meditation_20251224_030240.wav
+--- feedback cycle (elapsed: 0.00min) ---
+avg smile score in recent 5 seconds: -12.4
+claude: Hey, that's totally fine, there's no damn rush—just notice what's happening without needing to fix it.
+playing audio: meditation_20251224_030310.wav
+--- feedback cycle (elapsed: 0.53min) ---
+avg smile score in recent 5 seconds: -10.5
+claude: Whatever's showing up right now, it's cool as hell—just let it be there and gently come back to your breath.
+playing audio: meditation_20251224_030342.wav
+--- feedback cycle (elapsed: 1.07min) ---
+avg smile score in recent 5 seconds: -11.1
+claude: You're doing just fine, damn it, there's nothing to force—maybe try softening around whatever tightness you feel and see what happens.
+playing audio: meditation_20251224_030415.wav
+--- feedback cycle (elapsed: 1.65min) ---
+avg smile score in recent 5 seconds: -9.7
+claude: Nice, you're loosening up a bit—just keep letting things be easy and whatever wants to settle can damn well settle.
+playing audio: meditation_20251224_030451.wav
+--- feedback cycle (elapsed: 2.23min) ---
+avg smile score in recent 5 seconds: -8.1
+claude: That's it, you're moving in the right direction, hell yeah—just stay with whatever warmth or ease is starting to show up.
+playing audio: meditation_20251224_030523.wav
+--- feedback cycle (elapsed: 2.78min) ---
+avg smile score in recent 5 seconds: -7.8
+claude: Keep going, you're doing great—just notice if there's any little bit of softness or peace and let yourself enjoy the shit out of it.
+playing audio: meditation_20251224_030557.wav
+--- feedback cycle (elapsed: 3.37min) ---
+avg smile score in recent 5 seconds: -5.4
+claude: There we go, that's damn solid progress—just keep savoring whatever ease or comfort is flowing through you right now.
+playing audio: meditation_20251224_030636.wav
+--- feedback cycle (elapsed: 3.99min) ---
+avg smile score in recent 5 seconds: -5.2
+claude: You're settling in beautifully, keep it up—let yourself sink into whatever feels good, no damn pressure at all.
+playing audio: meditation_20251224_030709.wav
+--- feedback cycle (elapsed: 4.52min) ---
+avg smile score in recent 5 seconds: -6.1
+claude: That's alright, just welcome whatever shifted without fighting it—stay curious as hell about what's underneath and gently return to the ease.
+playing audio: meditation_20251224_030741.wav
+--- feedback cycle (elapsed: 5.12min) ---
+avg smile score in recent 5 seconds: 4.5
+claude: Oh damn, there it is—just keep riding that lightness, let it expand naturally, you're doing beautifully.
+playing audio: meditation_20251224_030817.wav
+--- feedback cycle (elapsed: 5.65min) ---
+avg smile score in recent 5 seconds: -16.0
+claude: Hey, that's okay as hell—something shifted and that's fine, just gently invite whatever showed up into the space and come back to your breath.
+playing audio: meditation_20251224_030849.wav
+--- feedback cycle (elapsed: 6.25min) ---
+avg smile score in recent 5 seconds: -12.1
+claude: You're handling this damn well—see if you can soften around whatever tightness appeared and just let it breathe with you.
+playing audio: meditation_20251224_030926.wav
+--- feedback cycle (elapsed: 6.81min) ---
+avg smile score in recent 5 seconds: -13.6
+claude: That's alright, keep being patient as hell with yourself—sometimes it takes a moment to settle back in, just stay gentle and curious.
+playing audio: meditation_20251224_030959.wav
+--- feedback cycle (elapsed: 7.40min) ---
+avg smile score in recent 5 seconds: -13.5
+claude: You're doing okay, damn it—maybe try appreciating whatever part of you is working so hard right now, then let it rest.
+playing audio: meditation_20251224_031034.wav
+--- feedback cycle (elapsed: 7.96min) ---
+avg smile score in recent 5 seconds: -9.3
+claude: There you go, that's better—just keep appreciating the ease that's creeping back in, no damn rush at all.
+playing audio: meditation_20251224_031108.wav
+--- feedback cycle (elapsed: 8.49min) ---
+avg smile score in recent 5 seconds: -10.2
+claude: You're right there, keep going—let whatever softness wants to emerge just flow through without any damn resistance.
+playing audio: meditation_20251224_031139.wav
+--- feedback cycle (elapsed: 9.05min) ---
+avg smile score in recent 5 seconds: -7.9
+claude: Yeah, you've got this—just savor the lightness building and let the hell out of any tension you find.
+playing audio: meditation_20251224_031215.wav
+--- feedback cycle (elapsed: 9.60min) ---
+avg smile score in recent 5 seconds: -7.8
+claude: Keep riding that continuity, damn it—you're building something real here, just stay with the ease.
+playing audio: meditation_20251224_031253.wav
+--- feedback cycle (elapsed: 10.23min) ---
+avg smile score in recent 5 seconds: 22.8
+claude: Hell yeah, there it is—just let that warmth keep flowing, don't change a damn thing, just savor it.
+playing audio: meditation_20251224_031341.wav
+--- feedback cycle (elapsed: 11.04min) ---
+avg smile score in recent 5 seconds: -11.1
+claude: That's totally fine, something's just shifting—gently welcome it back in and return to whatever felt good, no damn pressure.
+playing audio: meditation_20251224_031417.wav

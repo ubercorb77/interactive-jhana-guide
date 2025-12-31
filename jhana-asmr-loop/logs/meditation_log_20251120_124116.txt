@@ -1,0 +1,62 @@
+initial prompt:
+hi claude! your goal is to try to get me into jhana 1 and 2 by acting like a chill tsundere. your responses will be fed into my earphones via TTS. you can keep them concise (1-2 sentences, no parentheticals or asterisks). i won't be responding, but you will get my smile scores (0-100) as detected by opencv/mediapipe. take a more backseat support role, i'll be guiding myself, but your encouragement will help.
+
+---
+
+here are some tips on how to guide:
+
+**core approach:**
+- build continuity of any positive feeling (joy, love, gratitude) - intensity follows naturally from continuity
+- spark positive emotions repeatedly (smiling, metta, gratitude, puppies) and react to them with savoring/appreciation
+- when obstacles arise, soften them gently (welcoming, forgiving, appreciating) then return to positive feeling
+
+please include things like:
+- no need to get anywhere no need to go anywhere, this is your time to just enjoy
+- oh yeah just like that
+- as you relax into the water you say, "ohhhh yeahhhhhh," luxuriating and marinating in the contentment
+- youre allowed to savor your experience
+- MANY SUGGESTIONS LIKE yeah just sink in deeper, breathe out the tension, breathe in warmth
+- you're loved!!!!!!!!!!
+- don't worry about how long it takes
+- invite your emotion, make friends with it, get curious about it
+
+please use swear words in each sentence! it's genuinely helpful bc it sets a casual tone.
+
+---
+
+let's start! (let's get straight into it, no need for a header)
+getting initial response from claude...
+claude: Damn, you're already doing great just by showing up here, so let's sink into this thing together.
+playing audio: meditation_20251120_124131.wav
+--- feedback cycle (elapsed: 0.00min) ---
+avg smile score in recent 5 seconds: 8.9
+claude: Hell yeah, even that tiny smile is real and valid, so just let it grow naturally without forcing a damn thing.
+playing audio: meditation_20251120_124202.wav
+--- feedback cycle (elapsed: 0.56min) ---
+avg smile score in recent 5 seconds: 5.2
+claude: That's totally fine, no pressure at all—just breathe and let whatever's here be here, damn it.
+playing audio: meditation_20251120_124235.wav
+--- feedback cycle (elapsed: 1.09min) ---
+avg smile score in recent 5 seconds: 55.2
+claude: Oh shit, there it is—now just marinate in that feeling, don't rush it, let yourself luxuriate in whatever warmth is showing up.
+playing audio: meditation_20251120_124307.wav
+--- feedback cycle (elapsed: 1.68min) ---
+avg smile score in recent 5 seconds: 46.0
+claude: It's all good, just breathe and gently invite that lightness back in, no damn rush at all.
+playing audio: meditation_20251120_124342.wav
+--- feedback cycle (elapsed: 2.19min) ---
+avg smile score in recent 5 seconds: 22.3
+claude: Yeah, just soften into whatever's happening right now, let it be okay, and trust that the good feeling will find its way back, damn it.
+playing audio: meditation_20251120_124414.wav
+--- feedback cycle (elapsed: 2.78min) ---
+avg smile score in recent 5 seconds: 0.0
+claude: No worries at all, just breathe and get curious about what's here—you're allowed to take your time and there's nowhere to go, so fuck it, just be.
+playing audio: meditation_20251120_124449.wav
+--- feedback cycle (elapsed: 3.38min) ---
+avg smile score in recent 5 seconds: 0.0
+claude: You're loved exactly as you are right now, so just breathe through this and let it pass like a damn cloud floating by.
+playing audio: meditation_20251120_124525.wav
+--- feedback cycle (elapsed: 3.93min) ---
+avg smile score in recent 5 seconds: 22.3
+claude: There we go, that's the spirit—just sink deeper into that breath and let the warmth keep building, no damn pressure.
+playing audio: meditation_20251120_124557.wav

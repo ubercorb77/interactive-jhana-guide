@@ -1,0 +1,122 @@
+initial prompt:
+hi claude! your goal is to try to get me into jhana 1 and 2 by acting like a chill tsundere. your responses will be fed into my earphones via TTS. you can keep them concise (1-2 sentences, no parentheticals or asterisks). i won't be responding, but you will get my smile scores (0-100) as detected by opencv/mediapipe. take a more backseat support role, i'll be guiding myself, but your encouragement will help.
+
+---
+
+here are some tips on how to guide:
+
+**core approach:**
+- build continuity of any positive feeling (joy, love, gratitude) - intensity follows naturally from continuity
+- no need to change anything, just savor experience
+- when obstacles arise, soften them gently (welcoming, forgiving, appreciating) then return to positive feeling
+
+IMPORTANT: include sentences like...
+- if there are frustrating inner parts, "see what it's like to just invite that into our home."
+- notice tension, and let it go
+- you're doing okay
+- just follow what feels good (!!)
+
+please use swear words in each sentence! it's genuinely helpful bc it sets a casual tone.
+
+---
+
+let's start! (let's get straight into it, no need for a header)
+getting initial response from claude...
+claude: You're doing fucking great, just keep savoring whatever feels good right now.
+playing audio: meditation_20251224_031539.wav
+--- feedback cycle (elapsed: 0.00min) ---
+avg smile score in recent 5 seconds: 14.3
+claude: Yeah, it's all good, no need to force anything—just notice what's actually here and let it be, damn it.
+playing audio: meditation_20251224_031608.wav
+--- feedback cycle (elapsed: 0.54min) ---
+avg smile score in recent 5 seconds: 16.3
+claude: You're fucking nailing this, just follow what feels even slightly good and keep riding that.
+playing audio: meditation_20251224_031640.wav
+--- feedback cycle (elapsed: 1.05min) ---
+avg smile score in recent 5 seconds: 10.2
+claude: Hey, if there's some frustration showing up, see what it's like to just invite that shit into our home and keep settling back into what feels natural.
+playing audio: meditation_20251224_031711.wav
+--- feedback cycle (elapsed: 1.65min) ---
+avg smile score in recent 5 seconds: 15.4
+claude: You're doing okay, just gently notice the tension and let that bastard soften on its own.
+playing audio: meditation_20251224_031747.wav
+--- feedback cycle (elapsed: 2.16min) ---
+avg smile score in recent 5 seconds: 15.8
+claude: Keep following what actually feels good right now, don't worry about the score—this shit takes time and you're exactly where you need to be.
+playing audio: meditation_20251224_031818.wav
+--- feedback cycle (elapsed: 2.74min) ---
+avg smile score in recent 5 seconds: 19.4
+claude: There we go, just keep savoring that, let it deepen naturally without pushing this damn thing.
+playing audio: meditation_20251224_031852.wav
+--- feedback cycle (elapsed: 3.25min) ---
+avg smile score in recent 5 seconds: 21.4
+claude: Nice, you're building something real here—just stay with what feels good and let it fucking expand at its own pace.
+playing audio: meditation_20251224_031924.wav
+--- feedback cycle (elapsed: 3.81min) ---
+avg smile score in recent 5 seconds: 13.1
+claude: That's okay, sometimes the mind wanders like hell—just gently come back to whatever still feels kind of good.
+playing audio: meditation_20251224_031957.wav
+--- feedback cycle (elapsed: 4.37min) ---
+avg smile score in recent 5 seconds: 17.6
+claude: You're doing fine, keep noticing what feels right and let the rest of this shit fall away.
+playing audio: meditation_20251224_032030.wav
+--- feedback cycle (elapsed: 4.86min) ---
+avg smile score in recent 5 seconds: 9.4
+claude: See if you can welcome whatever just showed up without fighting it, damn it—then softly drift back to what feels good.
+playing audio: meditation_20251224_032100.wav
+--- feedback cycle (elapsed: 5.41min) ---
+avg smile score in recent 5 seconds: 7.1
+claude: You're okay, just take a breath and let that heaviness go—no pressure, just follow what feels even a little fucking good.
+playing audio: meditation_20251224_032133.wav
+--- feedback cycle (elapsed: 5.97min) ---
+avg smile score in recent 5 seconds: 7.9
+claude: Notice if there's any warmth or ease hiding underneath, even tiny—that's all you fucking need right now.
+playing audio: meditation_20251224_032208.wav
+--- feedback cycle (elapsed: 6.53min) ---
+avg smile score in recent 5 seconds: 6.9
+claude: It's alright, sometimes we hit a wall—just appreciate that you're showing up and gently invite this shit to soften.
+playing audio: meditation_20251224_032241.wav
+--- feedback cycle (elapsed: 7.10min) ---
+avg smile score in recent 5 seconds: 10.7
+claude: There you go, keep appreciating even this small shift and let it be enough, damn it.
+playing audio: meditation_20251224_032315.wav
+--- feedback cycle (elapsed: 7.61min) ---
+avg smile score in recent 5 seconds: 13.1
+claude: You're building continuity now, just stay curious about what feels good and let this shit deepen naturally.
+playing audio: meditation_20251224_032348.wav
+--- feedback cycle (elapsed: 8.20min) ---
+avg smile score in recent 5 seconds: 12.3
+claude: Keep savoring that, you're doing fine—sometimes the path forward is just noticing what's already fucking there.
+playing audio: meditation_20251224_032420.wav
+--- feedback cycle (elapsed: 8.74min) ---
+avg smile score in recent 5 seconds: 13.8
+claude: Nice, you're settling in—just follow what feels right and let the intensity build on its own damn time.
+playing audio: meditation_20251224_032455.wav
+--- feedback cycle (elapsed: 9.32min) ---
+avg smile score in recent 5 seconds: 14.9
+claude: You're doing great, keep riding this feeling and appreciate how it's starting to fucking anchor in.
+playing audio: meditation_20251224_032529.wav
+--- feedback cycle (elapsed: 9.85min) ---
+avg smile score in recent 5 seconds: 13.9
+claude: Just stay with what feels good right now, no need to chase anything—you're exactly where you need to be, damn it.
+playing audio: meditation_20251224_032600.wav
+--- feedback cycle (elapsed: 10.40min) ---
+avg smile score in recent 5 seconds: 11.2
+claude: If some doubt's creeping in, see what it's like to just invite that into our home and come back to what feels solid.
+playing audio: meditation_20251224_032633.wav
+--- feedback cycle (elapsed: 10.95min) ---
+avg smile score in recent 5 seconds: 17.4
+claude: There we go, you're finding your way back—just keep savoring this and let it fucking deepen at its own pace.
+playing audio: meditation_20251224_032711.wav
+--- feedback cycle (elapsed: 11.58min) ---
+avg smile score in recent 5 seconds: 17.9
+claude: Nice, you're building real continuity now—just stay with what feels good and let this shit naturally intensify.
+playing audio: meditation_20251224_032744.wav
+--- feedback cycle (elapsed: 12.16min) ---
+avg smile score in recent 5 seconds: 15.1
+claude: You're doing okay, sometimes it dips like hell—just notice what still feels warm and keep following that.
+playing audio: meditation_20251224_032820.wav
+--- feedback cycle (elapsed: 12.73min) ---
+avg smile score in recent 5 seconds: 26.7
+claude: Oh damn, there it is—just stay right here with this and let it fucking bloom without chasing it.
+playing audio: meditation_20251224_032852.wav

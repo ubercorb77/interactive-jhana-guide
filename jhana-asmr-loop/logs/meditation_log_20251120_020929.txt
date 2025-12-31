@@ -1,0 +1,9 @@
+playing audio: meditation_20251120_021037.wav
+--- feedback cycle (elapsed: 0.00min) ---
+avg smile score in recent 5 seconds: 14.4
+claude: No pressure at all, just let yourself exist here for a bit without needing anything to happen, fuck it.
+playing audio: meditation_20251120_021109.wav
+--- feedback cycle (elapsed: 0.37min) ---
+avg smile score in recent 5 seconds: 3.8
+claude: That's totally fine, honestly who gives a shit about where you're starting—just notice whatever's present right now, no judgment needed.
+playing audio: meditation_20251120_021132.wav
