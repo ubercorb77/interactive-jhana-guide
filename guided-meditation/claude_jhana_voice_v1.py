@@ -13,17 +13,19 @@ os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = "1"
 import numpy as np
 import sounddevice as sd
 from scipy.io import wavfile
+from scipy.signal import resample
 from dotenv import load_dotenv
 from anthropic import Anthropic
-from openai import OpenAI
+from pywhispercpp.model import Model as WhisperModel
 import replicate
 import pygame
 from termcolor import colored
 
 # ====== CONFIGURATION ======
 SILENCE_CHECK_INTERVAL = 20  # seconds before asking claude if it wants to speak
-SAMPLE_RATE = 16000  # whisper expects 16kHz
-SILENCE_DURATION = 3.0  # seconds of silence to consider speech ended
+WHISPER_RATE = 16000  # whisper expects 16kHz
+SAMPLE_RATE = 44100  # record at mic's native rate (macOS InputStream doesn't resample well)
+SILENCE_DURATION = 5.0  # seconds of silence to consider speech ended
 MIN_SPEECH_DURATION = 0.5  # minimum seconds of speech to process
 PROMPT_FILE = "voice_prompt.txt"
 
@@ -32,6 +34,7 @@ CALIBRATION_DURATION = 1.5  # seconds to sample ambient noise
 VAD_THRESHOLD_MULTIPLIER = 3.0  # threshold = ambient_avg * this multiplier
 
 # debug settings
+VERBOSE = True  # print mode - set to False for silent operation
 DEBUG_VOLUME = True  # show live volume meter
 VOLUME_BAR_WIDTH = 40  # width of volume bar in characters
 
@@ -42,34 +45,34 @@ MAX_DISPLAY_ENERGY = 0.15  # will be overwritten by calibration
 # ====== SETUP ======
 load_dotenv("../../.env")
 
-def get_builtin_mic():
-    """find the built-in microphone device index"""
+def select_mic():
+    """list input devices and let user pick one"""
     devices = sd.query_devices()
+    input_devices = []
     for i, device in enumerate(devices):
-        name = device['name'].lower()
-        # look for macbook built-in mic
-        if 'macbook' in name and device['max_input_channels'] > 0:
-            return i, device['name']
-        if 'built-in' in name and 'microphone' in name and device['max_input_channels'] > 0:
-            return i, device['name']
-    # fallback: look for any built-in input
-    for i, device in enumerate(devices):
-        name = device['name'].lower()
-        if 'built-in' in name and device['max_input_channels'] > 0:
-            return i, device['name']
-    return None, None
+        if device['max_input_channels'] > 0:
+            input_devices.append((i, device['name']))
 
-# find and set the built-in mic
-BUILTIN_MIC_INDEX, BUILTIN_MIC_NAME = get_builtin_mic()
-if BUILTIN_MIC_INDEX is not None:
-    sd.default.device[0] = BUILTIN_MIC_INDEX  # set default input device
-    print(f"using mic: {BUILTIN_MIC_NAME} (device {BUILTIN_MIC_INDEX})")
-else:
-    print("warning: could not find built-in mic, using system default")
+    print("\navailable microphones:")
+    for idx, (device_id, name) in enumerate(input_devices):
+        print(f"  [{idx}] {name} (device {device_id})")
+
+    while True:
+        try:
+            choice = input(f"\nselect mic [0-{len(input_devices)-1}]: ").strip()
+            choice_idx = int(choice)
+            if 0 <= choice_idx < len(input_devices):
+                device_id, name = input_devices[choice_idx]
+                sd.default.device[0] = device_id
+                print(f"using mic: {name} (device {device_id})")
+                return
+        except (ValueError, EOFError):
+            pass
+        print("invalid choice, try again")
 
 # initialize clients
 anthropic_client = Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
-openai_client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+whisper_model = WhisperModel("small.en", redirect_whispercpp_logs_to=None)
 
 # initialize pygame for audio playback
 pygame.mixer.init()
@@ -126,6 +129,8 @@ conversation_history = []
 
 def log(message):
     """print with timestamp"""
+    if not VERBOSE:
+        return
     timestamp = datetime.now().strftime("%H:%M:%S")
     print(f"[{timestamp}] {message}")
 
@@ -139,7 +144,8 @@ def calibrate_vad():
     """calibrate VAD threshold based on ambient noise"""
     global VAD_THRESHOLD, MAX_DISPLAY_ENERGY
 
-    print(f"\ncalibrating... please stay quiet for {CALIBRATION_DURATION}s")
+    if VERBOSE:
+        print(f"\ncalibrating... please stay quiet for {CALIBRATION_DURATION}s")
 
     energy_samples = []
 
@@ -153,17 +159,20 @@ def calibrate_vad():
                         blocksize=int(SAMPLE_RATE * 0.1), callback=calibration_callback):
         start_time = time.time()
         while time.time() - start_time < CALIBRATION_DURATION:
-            # show progress
-            elapsed = time.time() - start_time
-            progress = int((elapsed / CALIBRATION_DURATION) * 20)
-            bar = "█" * progress + "░" * (20 - progress)
-            print(f"\r[{bar}] {elapsed:.1f}s / {CALIBRATION_DURATION}s", end="", flush=True)
+            if VERBOSE:
+                # show progress
+                elapsed = time.time() - start_time
+                progress = int((elapsed / CALIBRATION_DURATION) * 20)
+                bar = "█" * progress + "░" * (20 - progress)
+                print(f"\r[{bar}] {elapsed:.1f}s / {CALIBRATION_DURATION}s", end="", flush=True)
             time.sleep(0.05)
 
-    print()  # newline after progress bar
+    if VERBOSE:
+        print()  # newline after progress bar
 
     if not energy_samples:
-        print("calibration failed, using defaults")
+        if VERBOSE:
+            print("calibration failed, using defaults")
         return
 
     # calculate stats
@@ -176,15 +185,18 @@ def calibrate_vad():
     # set display max to show headroom above threshold
     MAX_DISPLAY_ENERGY = VAD_THRESHOLD * 5
 
-    print(f"calibration complete:")
-    print(f"  - ambient avg: {avg_energy:.4f}")
-    print(f"  - ambient max: {max_energy:.4f}")
-    print(f"  - VAD threshold: {VAD_THRESHOLD:.4f} ({VAD_THRESHOLD_MULTIPLIER}x ambient)")
-    print()
+    if VERBOSE:
+        print(f"calibration complete:")
+        print(f"  - ambient avg: {avg_energy:.4f}")
+        print(f"  - ambient max: {max_energy:.4f}")
+        print(f"  - VAD threshold: {VAD_THRESHOLD:.4f} ({VAD_THRESHOLD_MULTIPLIER}x ambient)")
+        print()
 
 
 def print_volume_bar(energy, threshold, is_speaking):
     """print a live volume meter"""
+    if not VERBOSE:
+        return
     # scale energy for display
     normalized = min(energy / MAX_DISPLAY_ENERGY, 1.0)
     bar_length = int(normalized * VOLUME_BAR_WIDTH)
@@ -215,10 +227,11 @@ def record_speech():
     silence_start = None
     speech_detected = False
     speech_start = None
+    speech_chunks = 0
     current_energy = 0.0
 
     def audio_callback(indata, frames, time_info, status):
-        nonlocal silence_start, speech_detected, speech_start, current_energy
+        nonlocal silence_start, speech_detected, speech_start, speech_chunks, current_energy
 
         audio_chunk = indata[:, 0]  # mono
         energy = calculate_energy(audio_chunk)
@@ -228,10 +241,8 @@ def record_speech():
             if not speech_detected:
                 speech_detected = True
                 speech_start = time.time()
-                if DEBUG_VOLUME:
-                    print()  # newline before "speech detected"
-                log("speech detected...")
             silence_start = None
+            speech_chunks += 1
             audio_buffer.append(audio_chunk.copy())
         elif speech_detected:
             audio_buffer.append(audio_chunk.copy())
@@ -265,39 +276,49 @@ def record_speech():
     if not audio_buffer:
         return None
 
-    # check minimum duration
     audio_data = np.concatenate(audio_buffer)
-    duration = len(audio_data) / SAMPLE_RATE
-
-    if duration < MIN_SPEECH_DURATION:
-        log(f"speech too short ({duration:.1f}s), ignoring")
-        return None
-
-    log(f"recorded {duration:.1f}s of audio")
+    speech_duration = speech_chunks * 0.1
+    total_duration = len(audio_data) / SAMPLE_RATE
+    log(f"recorded {total_duration:.1f}s ({speech_duration:.1f}s speech)")
     return audio_data
 
 
 def transcribe_audio(audio_data):
-    """transcribe audio using OpenAI Whisper API"""
+    """transcribe audio using local whisper.cpp"""
     try:
-        # convert to int16 for wav
-        audio_int16 = (audio_data * 32767).astype(np.int16)
+        import tempfile
 
-        # write to bytes buffer
-        buffer = io.BytesIO()
-        wavfile.write(buffer, SAMPLE_RATE, audio_int16)
-        buffer.seek(0)
-        buffer.name = "audio.wav"
+        # downsample from native rate to 16kHz for whisper
+        num_samples = int(len(audio_data) * WHISPER_RATE / SAMPLE_RATE)
+        audio_16k = resample(audio_data, num_samples)
+
+        # convert to int16 for wav
+        audio_int16 = (audio_16k * 32767).astype(np.int16)
+
+        # write to temp file (pywhispercpp needs a file path)
+        with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as f:
+            wavfile.write(f.name, WHISPER_RATE, audio_int16)
+            tmp_path = f.name
 
         # transcribe
         log("transcribing...")
-        response = openai_client.audio.transcriptions.create(
-            model="whisper-1",
-            file=buffer,
-            language="en"
-        )
+        segments = whisper_model.transcribe(tmp_path)
+        os.unlink(tmp_path)
 
-        text = response.text.strip()
+        text = " ".join(seg.text for seg in segments).strip()
+        if not text:
+            return None
+
+        # whisper hallucinations on near-silent audio
+        if "[BLANK_AUDIO]" in text or "(blank audio)" in text.lower() or "silence" in text.lower().split():
+            log("blank audio detected, skipping")
+            return None
+
+        words = ''.join(c for c in text if c.isalnum() or c.isspace()).split()
+        if len(words) < 3:
+            log(f"transcription too short ({text!r}), ignoring")
+            return None
+
         log(colored(f"you: {text}", 'green'))
         write_log("user", text)
         return text
@@ -345,7 +366,7 @@ def generate_and_play_audio(text):
 
         output = replicate.run(
             "jaaari/kokoro-82m:f559560eb822dc509045f3921a1921234918b91739db4bf3daab2169b71c7a13",
-            input={"text": text, "voice": "af_nicole"}
+            input={"text": text, "voice": "af_nicole", "speed": 1.3}
         )
 
         # save audio file
@@ -370,6 +391,10 @@ def generate_and_play_audio(text):
         with audio_lock:
             is_playing_audio = False
 
+        # reset silence timer so it starts counting from when audio finishes
+        global last_user_speech_time
+        last_user_speech_time = time.time()
+
         log("audio finished")
 
     except Exception as e:
@@ -390,8 +415,7 @@ def handle_silence():
         generate_and_play_audio(response)
     else:
         log("claude chose to wait...")
-
-    last_user_speech_time = time.time()
+        last_user_speech_time = time.time()
 
 
 def main_loop():
@@ -412,6 +436,12 @@ def main_loop():
 
     # log the initial prompt as user message
     write_log("user", initial_prompt)
+
+    if VERBOSE:
+        print("\n" + "="*50)
+        print("meditation session started! speak anytime, or stay silent.")
+        print("press Ctrl+C to end session")
+        print("="*50 + "\n")
 
     # get initial greeting
     log("getting initial response from claude...")
@@ -437,11 +467,6 @@ def main_loop():
 
     last_user_speech_time = time.time()
     session_active = True
-
-    log("\n" + "="*50)
-    log("meditation session started! speak anytime, or stay silent.")
-    log("press Ctrl+C to end session")
-    log("="*50 + "\n")
 
     while session_active:
         try:
@@ -474,7 +499,7 @@ def main_loop():
 
             # get claude response
             response = get_claude_response(text)
-            if response:
+            if response and response.strip() != "[WAIT]":
                 log(colored(f"claude: {response}", 'blue'))
                 generate_and_play_audio(response)
 
@@ -491,19 +516,27 @@ def main():
     print("\n" + "="*50)
     print("  jhana voice meditation guide")
     print("="*50)
-    print(f"\nconfig:")
-    print(f"  - silence check interval: {SILENCE_CHECK_INTERVAL}s")
-    print(f"  - sample rate: {SAMPLE_RATE}Hz")
-    print(f"  - debug volume: {DEBUG_VOLUME}")
+
+    # select microphone
+    select_mic()
+
+    if VERBOSE:
+        print(f"\nconfig:")
+        print(f"  - silence check interval: {SILENCE_CHECK_INTERVAL}s")
+        print(f"  - sample rate: {SAMPLE_RATE}Hz")
+        print(f"  - debug volume: {DEBUG_VOLUME}")
 
     # initialize logging
     log_path = init_log()
-    print(f"  - log file: {log_path}")
+    if VERBOSE:
+        print(f"  - log file: {log_path}")
 
-    # calibrate VAD threshold based on ambient noise
+    # calibrate VAD threshold on keypress
+    input("\npress enter to calibrate (stay quiet after releasing)...")
+    time.sleep(0.1)
     calibrate_vad()
 
-    if DEBUG_VOLUME:
+    if VERBOSE and DEBUG_VOLUME:
         print("volume bar legend:")
         print(f"  {colored('█', 'yellow')} = below threshold (not detected as speech)")
         print(f"  {colored('█', 'green')} = above threshold (detected as speech)")
@@ -518,7 +551,8 @@ def main():
         session_active = False
         pygame.mixer.quit()
         print("\n\nsession ended. thank you for meditating! ^^")
-        print(f"log saved to: {log_file}")
+        if VERBOSE:
+            print(f"log saved to: {log_file}")
 
 
 if __name__ == "__main__":
